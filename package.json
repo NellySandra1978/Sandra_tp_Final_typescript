@@ -1,0 +1,25 @@
+{
+  "name": "event-app",
+  "version": "1.0.0",
+  "description": "Application web de gestion d'évènements - TypeScript pur sans framework",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "start": "npm run build && node scripts/start.js"
+  },
+  "keywords": [
+    "typescript",
+    "events",
+    "crud",
+    "frontend"
+  ],
+  "author": "",
+  "license": "",
+  "devDependencies": {
+    "get-port": "^7.1.0",
+    "http-server": "^14.1.1",
+    "open": "^9.1.0",
+    "typescript": "^5.0.0"
+  }
+}
+

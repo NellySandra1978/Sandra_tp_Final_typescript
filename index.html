@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event App – Gestion d'évènements</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <script type="module" src="dist/main.js"></script>
+</head>
+<body>
+    <header id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="#home" class="logo">Event App</a>
+            </div>
+
+            <nav>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#create">Créer un évènement</a></li>
+                    <li><a href="#filters">Filtres</a></li>
+                    <li><a href="#list">Liste</a></li>
+                </ul>
+                <button class="theme-toggle" id="theme-toggle" title="Changer de thème">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p>
+                Planifiez facilement chaque étape de vos évènements.<br>
+                Collaborez, suivez les inscriptions et gérez la capacité en temps réel.<br>
+                Conçu et maintenu par une organisatrice professionnelle.
+            </p>
+            <a href="#create" class="cta-button">Créer un évènement</a>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="alerts" class="alerts" aria-live="polite"></section>
+
+        <section id="create" class="card">
+            <h2>Nouvel évènement</h2>
+            <form id="event-form" class="form-grid">
+                <label>Intitulé
+                    <input type="text" id="event-title" required />
+                </label>
+                <label>Description
+                    <textarea id="event-description" rows="3" required></textarea>
+                </label>
+                <label>Date et heure
+                    <input type="datetime-local" id="event-date" required />
+                </label>
+                <label>Lieu
+                    <input type="text" id="event-place" required />
+                </label>
+                <label>Catégorie
+                    <select id="event-category" required>
+                        <option value="">Choisir...</option>
+                        <option value="conférence">Conférence</option>
+                        <option value="sport">Sport</option>
+                        <option value="atelier">Atelier</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </label>
+                <label>Capacité (places)
+                    <input type="number" id="event-capacity" min="1" value="20" required />
+                </label>
+                <!-- Champ email du créateur retiré pour simplifier la création par l'administrateur -->
+                <button type="submit" class="cta-button">Ajouter</button>
+            </form>
+        </section>
+
+        <section id="users" class="card">
+            <h2>Créer un utilisateur</h2>
+            <form id="user-form" class="form-grid">
+                <label>Nom complet
+                    <input type="text" id="user-name" required />
+                </label>
+                <label>Email institutionnel
+                    <input type="email" id="user-email" required placeholder="exemple@institution.edu" />
+                </label>
+                <button type="submit" class="cta-button">Enregistrer l'utilisateur</button>
+            </form>
+        </section>
+
+        <section id="filters" class="card">
+            <div class="card-header">
+                <h2>Filtrer les évènements</h2>
+                <button id="reset-filters" type="button" class="ghost-btn">Réinitialiser</button>
+            </div>
+            <div class="filters-grid">
+                <label>Catégorie
+                    <select id="filter-category">
+                        <option value="">Toutes</option>
+                        <option value="conférence">Conférence</option>
+                        <option value="sport">Sport</option>
+                        <option value="atelier">Atelier</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </label>
+                <label>Date min
+                    <input type="date" id="filter-date-min" />
+                </label>
+                <label>Date max
+                    <input type="date" id="filter-date-max" />
+                </label>
+            </div>
+        </section>
+
+        <section id="list" class="card">
+            <div class="card-header">
+                <h2>Évènements</h2>
+                <p id="events-count" class="muted"></p>
+            </div>
+            <div id="events-list" class="events-grid">
+                <!-- Cartes évènements générées par main.ts -->
+            </div>
+        </section>
+    </main>
+
+    <div id="event-modal" class="modal" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close" aria-label="Fermer">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modal-body">
+                <!-- Contenu détail + formulaire d'inscription injecté par main.ts -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <h3>Event App</h3>
+                <p>Application front-only en TypeScript avec stockage en mémoire.</p>
+            </div>
+            <div>
+                <h3>Fonctionnalités</h3>
+                <ul>
+                    <li>Création d'évènements</li>
+                    <li>Filtrage catégorie / date</li>
+                    <li>Détail + inscription</li>
+                    <li>Validation capacité et doublons</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Event App.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
